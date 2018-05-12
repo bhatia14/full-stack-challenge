@@ -1,0 +1,26 @@
+{
+  "name": "performance",
+  "plural": "reviews",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "emp_id": {
+      "type": "number",
+      "required": true
+    },
+    "review": {
+      "type": "string"
+    },
+    "reviewer_id": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
