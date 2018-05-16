@@ -1,0 +1,73 @@
+<h2>Register Employee</h2>
+
+<form [formGroup]="form" (ngSubmit)="register()">
+  <div class="imgcontainer">
+
+  </div>
+  <div formGroupName="account">
+
+
+
+  <div class="container form-group">
+
+      <label for="uname"><b>Employee Id</b></label>
+      <input 
+      type="text" 
+      formControlName="empid" 
+      class="form-control" 
+      placeholder="Enter Empid" 
+      name="uname" 
+      required>
+
+      <label for="uname"><b>Email</b></label>
+      <input 
+      type="text" 
+      formControlName="email" 
+      class="form-control" 
+      placeholder="Enter Email" 
+      name="uname" 
+      required>
+
+      <label for="uname"><b>Status</b></label>
+      <input 
+      type="text" 
+      formControlName="status" 
+      class="form-control" 
+      placeholder="Enter Status" 
+      name="uname" 
+      required>
+
+      <label for="uname"><b>Role</b></label>
+      <input 
+      type="text" 
+      formControlName="role" 
+      class="form-control" 
+      placeholder="Enter role" 
+      name="uname" 
+      required>
+
+    <label for="uname"><b>Name</b></label>
+    <input 
+    type="text" 
+    formControlName="name" 
+    class="form-control" 
+    placeholder="Enter Name" 
+    name="uname" 
+    required>
+
+    <label for="psw"><b>Password</b></label>
+    <input formControlName="password"
+    id="password" 
+    type="password" 
+    placeholder="Enter Password" 
+    name="psw" 
+    class="form-control"
+    required>
+        
+    <button type="submit">Register</button>
+  </div>
+</div>
+  <div class="container" style="background-color:#f1f1f1">
+    <span class="psw"><a routerLink="">Login</a></span>
+  </div>
+</form>
