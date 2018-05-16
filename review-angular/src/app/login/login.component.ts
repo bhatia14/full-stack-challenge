@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     this.http.get(this.url+'/'+this.username.value)
         .subscribe(response=> {
           if(this.password.value===response.json().password){
-             this.router.navigate(['admin']);
+            response.json().role=='admin'? this.router.navigate(['admin']) : this.router.navigate(['employee'], { queryParams: { id: this.username.value }});
           }
         },
         (err: Response)=>{

@@ -12,6 +12,7 @@ import { Http } from '@angular/http';
 export class RegisterComponent implements OnInit {
 
   url = "http://localhost:3000/api/employee";
+  open:boolean = false;
   constructor(private router:Router,
     private http: Http) { }
 
@@ -60,36 +61,33 @@ export class RegisterComponent implements OnInit {
     
     //let resp = this.dataService.getData(this.username.value);
     let employeeObj = {
-      emp_id: +this.empid.value,
-      name: ""+this.name.value,
-      email: ""+this.email.value,
-      status: ""+this.status.value,
-      role: ""+this.role.value,
-      password: ""+this.password.value,
-      id: +this.empid.value
+      "emp_id" : +this.empid.value,
+      "name" : ""+this.name.value,
+      "email" : ""+this.email.value,
+      "status": ""+this.status.value,
+      "role": ""+this.role.value,
+      "password": ""+this.password.value,
+      "id": +this.empid.value
     };
-    let x = JSON.stringify(employeeObj);
-    this.http.post(this.url, x)
-        .subscribe(response=> {          
+    //let x = JSON.stringify(employeeObj);
+    this.http.post(this.url, employeeObj)
+        .subscribe(response=> {       
+            this.open=true;   
+            alert("Success");
              this.router.navigate(['']);
         },
         (err: Response)=>{
           console.log(err.json());
           this.router.navigate(['error']);
         });
-   
-
-    // this.http.get(this.url+'/'+this.username.value)
-    // .subscribe(response=> {
-    //   console.log(response)
-    // });
-
-    //console.log(this.dataService.getData({this.form.}));
-    
 
     this.form.setErrors({
       invalidLogin : true
     });
+  }
+
+  closeModal(){
+    this.open=false;
   }
 
 }

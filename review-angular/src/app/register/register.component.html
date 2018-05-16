@@ -71,3 +71,25 @@
     <span class="psw"><a routerLink="">Login</a></span>
   </div>
 </form>
+
+
+
+<div class="modal" [class.active]="open ? 'fade in': 'fade'" id="myModal" role="dialog" [style.display]="open?'block':'none'">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" (click)="closeModal()" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          Suucess fully added new user
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="closeModal()" class="btn btn-default" data-dismiss="modal">Assign</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

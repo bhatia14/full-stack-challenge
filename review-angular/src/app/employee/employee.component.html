@@ -1,3 +1,67 @@
-<p>
-  employee works!
-</p>
+<div class="container">
+    <h2>Employee Info</h2>
+    <div class="float-lg-right">
+      <button (click)="logout()">Logout</button>
+    </div>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Emp Id</th>
+            <th>Name</th>
+            <th>email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> {{employee.id}}</td>
+            <td> {{employee.name}}</td>
+            <td> {{employee.email}}</td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <h3>Review Employees</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Emp Id</th>
+        <th>Review</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let postVal of employees">
+      <tr>
+        <td> {{postVal.emp_id}}</td>
+        <td> {{postVal.review}}</td>
+        <td><button type="button" (click)="openModal(employees, postVal.id)"  data-toggle="modal" data-target="#myModal">write/update</button></td>
+      </tr>
+  </tbody>
+</table>
+</div>
+
+
+ <!-- Modal -->
+ <div class="modal" [class.active]="open ? 'fade in': 'fade'" id="myModal" role="dialog" [style.display]="open?'block':'none'">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" (click)="closeModal()" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <select class="form-control" id="sel1"
+          [(ngModel)]="selectedDevice" (change)="reviewName(selectedDevice,oneEmp)"
+          >
+            <option *ngFor="let postVal of employees" ><span *ngIf="oneEmp!==postVal.id">{{postVal.id}}</span> </option>  
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="assignReview()" class="btn btn-default" data-dismiss="modal">Assign</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

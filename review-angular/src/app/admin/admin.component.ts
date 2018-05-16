@@ -10,9 +10,11 @@ import { post } from 'selenium-webdriver/http';
 })
 export class AdminComponent implements OnInit {
   url = "http://localhost:3000/api/employee";
+  url2 = "http://localhost:3000/api/reviews";
   employees:any[];
   open:boolean = false;
   oneEmp:any[];
+  reviewerDetails:any[];
   
   constructor(private router:Router,
     private http: Http) { }
@@ -40,8 +42,28 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  assignReview(id){
-    console.log(id)
+  assignReview(){
+    console.log(this.reviewerDetails);
+    this.open=false;
+  }
+
+  reviewName(reviewerDetails, emp_id){
+   // this.reviewerDetails = reviewerDetails;
+    let x = {
+      "emp_id": +emp_id,
+      "review": "",
+      "reviewer_id": +reviewerDetails
+    }
+    this.http.post(this.url2, x)
+        .subscribe(response=> {          
+             //this.router.navigate(['admin']);
+             console.log("Assigned");
+        },
+        (err: Response)=>{
+          console.log(err.json());
+          this.router.navigate(['error']);
+        });
+   
   }
 
   openModal(employees, oneEmp){
