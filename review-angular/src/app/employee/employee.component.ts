@@ -39,9 +39,10 @@ export class EmployeeComponent implements OnInit {
           this.router.navigate(['error']);
         });
 
-        this.http.get(this.url2+'/'+this.emp_id)
+        this.http.get(this.url2)
         .subscribe(response=> {
-          this.employees=response.json();
+          if(response.status==200)
+            this.employees=response.json();
         },
         (err: Response)=>{
           this.router.navigate(['error']);

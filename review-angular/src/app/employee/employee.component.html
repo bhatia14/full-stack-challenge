@@ -1,7 +1,7 @@
 <div class="container">
     <h2>Employee Info</h2>
     <div class="float-lg-right">
-      <button (click)="logout()">Logout</button>
+      <button routerLink="">Logout</button>
     </div>
     <table class="table table-striped">
         <thead>
@@ -12,7 +12,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr *ngIf="employee.id!=undefined">
             <td> {{employee.id}}</td>
             <td> {{employee.name}}</td>
             <td> {{employee.email}}</td>
@@ -31,7 +31,7 @@
       </tr>
     </thead>
     <tbody *ngFor="let postVal of employees">
-      <tr>
+      <tr *ngIf="emp_id==postVal.reviewer_id">
         <td> {{postVal.emp_id}}</td>
         <td> {{postVal.review}}</td>
         <td><button type="button" (click)="openModal(employees, postVal.id)"  data-toggle="modal" data-target="#myModal">write/update</button></td>
