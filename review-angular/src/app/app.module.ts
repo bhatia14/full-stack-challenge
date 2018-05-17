@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { LogutComponent } from './logut/logut.component';
 import { RegisterComponent } from './register/register.component';
+import { ReviewComponent } from './review/review.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RegisterComponent } from './register/register.component';
     AdminComponent,
     EmployeeComponent,
     LogutComponent,
-    RegisterComponent
+    RegisterComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,10 @@ import { RegisterComponent } from './register/register.component';
       {
         path: 'register', 
         component: RegisterComponent
+      },
+      {
+        path: 'employee/review', 
+        component: ReviewComponent
       },
       {
         path: '**', 

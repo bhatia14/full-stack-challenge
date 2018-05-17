@@ -1,0 +1,27 @@
+<h2>Review Employee</h2>
+
+<form [formGroup]="form" (ngSubmit)="addReview()">
+  <div class="imgcontainer">
+
+  </div>
+  <div formGroupName="reviews">
+
+  <div class="container form-group">
+
+      <label for="uname"><b>Reviewer Id: </b></label>
+      <label for="uname"><b>{{emp_id}}</b></label><br>
+      <label for="uname"><b>Employee ID: </b></label>
+      <label for="uname"><b>{{reviewer_id}}</b></label><br>
+      
+      <textarea class="form-control" formControlName="review" rows="5" id="comment"></textarea>
+
+      
+        <br>
+    <button type="submit">Add Review</button>
+  </div>
+</div>
+  <div class="container" style="background-color:#f1f1f1">
+    
+  </div>
+</form>
+

@@ -19,9 +19,12 @@ export class EmployeeComponent implements OnInit {
   reviewerDetails:any[];
   sub:any;
   emp_id:any;
+  public n: number = 1;
   constructor(private router:Router,
     private http: Http,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) { 
+      
+    }
 
   ngOnInit() {
     this.sub = this.route
@@ -30,7 +33,9 @@ export class EmployeeComponent implements OnInit {
         // Defaults to 0 if no query param provided.
         this.emp_id = +params['id'] || 0;
 
-
+        setTimeout(() => {
+          this.n = this.n + 10;
+        }, 1000);
         this.http.get(this.url+'/'+this.emp_id)
         .subscribe(response=> {
           this.employee=response.json();
@@ -38,6 +43,10 @@ export class EmployeeComponent implements OnInit {
         (err: Response)=>{
           this.router.navigate(['error']);
         });
+        
+        setTimeout(() => {
+          this.n = this.n + 10;
+        }, 1000);
 
         this.http.get(this.url2)
         .subscribe(response=> {

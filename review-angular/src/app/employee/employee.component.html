@@ -12,10 +12,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngIf="employee.id!=undefined">
-            <td> {{employee.id}}</td>
-            <td> {{employee.name}}</td>
-            <td> {{employee.email}}</td>
+          <tr>
+            <td *ngIf="employee.id!=undefined"> {{employee.id}}</td>
+            <td *ngIf="employee.name!=undefined"> {{employee.name}}</td>
+            <td *ngIf="employee.email!=undefined"> {{employee.email}}</td>
           </tr>
       </tbody>
     </table>
@@ -34,34 +34,13 @@
       <tr *ngIf="emp_id==postVal.reviewer_id">
         <td> {{postVal.emp_id}}</td>
         <td> {{postVal.review}}</td>
-        <td><button type="button" (click)="openModal(employees, postVal.id)"  data-toggle="modal" data-target="#myModal">write/update</button></td>
+        <td><button type="button" routerLink="review" 
+          [queryParams]="{emp_id: employee.id, review_id: postVal.emp_id, id:postVal.id}">
+          write/update</button></td>
       </tr>
   </tbody>
 </table>
 </div>
 
 
- <!-- Modal -->
- <div class="modal" [class.active]="open ? 'fade in': 'fade'" id="myModal" role="dialog" [style.display]="open?'block':'none'">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" (click)="closeModal()" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <select class="form-control" id="sel1"
-          [(ngModel)]="selectedDevice" (change)="reviewName(selectedDevice,oneEmp)"
-          >
-            <option *ngFor="let postVal of employees" ><span *ngIf="oneEmp!==postVal.id">{{postVal.id}}</span> </option>  
-          </select>
-        </div>
-        <div class="modal-footer">
-          <button type="button" (click)="assignReview()" class="btn btn-default" data-dismiss="modal">Assign</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+ 
